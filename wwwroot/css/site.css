@@ -7,9 +7,47 @@ html {
     font-size: 16px;
   }
 }
+/* navbar logo and nav customization*/
+.navbar-logo {
+  height: 100px;
+  width: auto; 
+  vertical-align: middle;
+}
+
+/*had to use the important tag because i couldnt for the life of me figure out how
+to change the background of the navbar within the other css files*/
+header .navbar{
+  background-color: #d6d0b8 !important;
+}
+/*sign in button customization */
+.btn-primary {
+  background-color: #f1f4c6; 
+  border: none;
+  color: #000000; 
+  font-weight: 600; 
+  padding: 10px 20px; 
+  border-radius: 4px; 
+  transition: background-color 0.3s ease; 
+  text-decoration: none; 
+}
+
+.btn-primary:hover {
+  background-color: #147d51; 
+  color: #000000; 
+  cursor: pointer; 
+}
+
+
+.btn-primary:active {
+  background-color: #0b4b31; 
+}
+.btn-primary:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.2rem #0b4b31; /* Bootstrap style focus shadow */
+}
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #0b4b31;
 }
 
 html {
@@ -19,4 +57,5 @@ html {
 
 body {
   margin-bottom: 60px;
+  background-color:#f1f4c6
 }

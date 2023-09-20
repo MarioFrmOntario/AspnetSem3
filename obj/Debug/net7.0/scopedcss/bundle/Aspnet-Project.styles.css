@@ -2,20 +2,34 @@
 /* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
+/*typography*/
 a.navbar-brand[b-itfbs4pgl3] {
   white-space: normal;
   text-align: center;
   word-break: break-all;
 }
 
+.nav-item[b-itfbs4pgl3] {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;  
+}
+
+main h1[b-itfbs4pgl3],h2[b-itfbs4pgl3]{
+  text-align: center;
+  justify-content: center;
+}
+
 a[b-itfbs4pgl3] {
   color: #0077cc;
 }
 
+
 .btn-primary[b-itfbs4pgl3] {
   color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+  /*didnt want to mess with too many things so commented this out in case i needed to change it for the future*/
+ /* background-color: #1b6ec2;
+  border-color: #1861ac;*/
 }
 
 .nav-pills .nav-link.active[b-itfbs4pgl3], .nav-pills .show > .nav-link[b-itfbs4pgl3] {

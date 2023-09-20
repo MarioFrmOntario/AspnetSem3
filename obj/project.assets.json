@@ -11534,19 +11534,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Mario\\.nuget\\packages\\": {}
+    "C:\\Users\\mario\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\Mario\\Documents\\Georgian-college\\Georgian-Files-and-info\\AspNet\\Big-boy-Project\\Aspnet-Project\\Aspnet-Project.csproj",
+      "projectUniqueName": "c:\\Users\\mario\\OneDrive\\Documents\\gitrepo\\AspnetSem3\\Aspnet-Project.csproj",
       "projectName": "Aspnet-Project",
-      "projectPath": "c:\\Users\\Mario\\Documents\\Georgian-college\\Georgian-Files-and-info\\AspNet\\Big-boy-Project\\Aspnet-Project\\Aspnet-Project.csproj",
-      "packagesPath": "C:\\Users\\Mario\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\Mario\\Documents\\Georgian-college\\Georgian-Files-and-info\\AspNet\\Big-boy-Project\\Aspnet-Project\\obj\\",
+      "projectPath": "c:\\Users\\mario\\OneDrive\\Documents\\gitrepo\\AspnetSem3\\Aspnet-Project.csproj",
+      "packagesPath": "C:\\Users\\mario\\.nuget\\packages\\",
+      "outputPath": "c:\\Users\\mario\\OneDrive\\Documents\\gitrepo\\AspnetSem3\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Mario\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\mario\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
