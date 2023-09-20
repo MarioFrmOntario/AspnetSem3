@@ -7,6 +7,30 @@ html {
     font-size: 16px;
   }
 }
+
+/*typography*/
+.nav-item a, .pb-3 h1, .pb-3 h2 {
+  font-family: 'Barlow', sans-serif;
+}
+
+.text-center h1 {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.text-center p {
+  font-family: 'PT Sans', sans-serif;
+  
+}
+
+#company-info tbody tr td:nth-child(odd), #proposal tbody tr td:nth-child(odd) {
+  font-family: 'Barlow', sans-serif;
+  font-weight: bolder;
+}
+
+#company-info tbody tr td:nth-child(even), #proposal tbody tr td:nth-child(even) {
+  font-family: 'PT Sans', sans-serif;
+}
+
 /* navbar logo and nav customization*/
 .navbar-logo {
   height: 100px;
@@ -58,4 +82,19 @@ html {
 body {
   margin-bottom: 60px;
   background-color:#f1f4c6
+}
+
+
+/* photo grid on home page */
+
+.photo-grid .col-md-4 {
+  border: 1px solid #050505;  
+  padding: 15px;  
+  box-sizing: border-box; 
+}
+
+.photo-grid img {
+  max-width: 100%;  
+  display: block;  
+  margin: 0 auto;  
 }
