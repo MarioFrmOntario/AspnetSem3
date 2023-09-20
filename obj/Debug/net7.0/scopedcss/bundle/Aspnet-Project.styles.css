@@ -54,11 +54,9 @@ button.accept-policy[b-itfbs4pgl3] {
   line-height: inherit;
 }
 
-.footer[b-itfbs4pgl3] {
+.footer a[b-itfbs4pgl3] {
   width: 100%;
   height: 60px;
   white-space: nowrap;
   line-height: 60px;
-  justify-content: center;
-  text-align: center;
 }
