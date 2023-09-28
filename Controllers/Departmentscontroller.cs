@@ -9,90 +9,87 @@ using Aspnet_Project.Models;
 
 namespace Aspnet_Project.Controllers
 {
-    public class Productscontroller : Controller
+    public class Departmentscontroller : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public Productscontroller(ApplicationDbContext context)
+        public Departmentscontroller(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: Productscontroller
+        // GET: Departmentscontroller
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Products.Include(p => p.Department);
-            return View(await applicationDbContext.ToListAsync());
+              return _context.Departments != null ? 
+                          View(await _context.Departments.ToListAsync()) :
+                          Problem("Entity set 'ApplicationDbContext.Departments'  is null.");
         }
 
-        // GET: Productscontroller/Details/5
+        // GET: Departmentscontroller/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Products == null)
+            if (id == null || _context.Departments == null)
             {
                 return NotFound();
             }
 
-            var product = await _context.Products
-                .Include(p => p.Department)
+            var department = await _context.Departments
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (product == null)
+            if (department == null)
             {
                 return NotFound();
             }
 
-            return View(product);
+            return View(department);
         }
 
-        // GET: Productscontroller/Create
+        // GET: Departmentscontroller/Create
         public IActionResult Create()
         {
-            ViewData["DepartmentId"] = new SelectList(_context.Departments, "Id", "Name");
             return View();
         }
 
-        // POST: Productscontroller/Create
+        // POST: Departmentscontroller/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,DepartmentId,Name,Description,Image,MSRP")] Product product)
+        public async Task<IActionResult> Create([Bind("Id,Name,Description")] Department department)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(product);
+                _context.Add(department);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["DepartmentId"] = new SelectList(_context.Departments, "Id", "Name", product.DepartmentId);
-            return View(product);
+            return View(department);
         }
 
-        // GET: Productscontroller/Edit/5
+        // GET: Departmentscontroller/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Products == null)
+            if (id == null || _context.Departments == null)
             {
                 return NotFound();
             }
 
-            var product = await _context.Products.FindAsync(id);
-            if (product == null)
+            var department = await _context.Departments.FindAsync(id);
+            if (department == null)
             {
                 return NotFound();
             }
-            ViewData["DepartmentId"] = new SelectList(_context.Departments, "Id", "Name", product.DepartmentId);
-            return View(product);
+            return View(department);
         }
 
-        // POST: Productscontroller/Edit/5
+        // POST: Departmentscontroller/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,DepartmentId,Name,Description,Image,MSRP")] Product product)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description")] Department department)
         {
-            if (id != product.Id)
+            if (id != department.Id)
             {
                 return NotFound();
             }
@@ -101,12 +98,12 @@ namespace Aspnet_Project.Controllers
             {
                 try
                 {
-                    _context.Update(product);
+                    _context.Update(department);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ProductExists(product.Id))
+                    if (!DepartmentExists(department.Id))
                     {
                         return NotFound();
                     }
@@ -117,51 +114,49 @@ namespace Aspnet_Project.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["DepartmentId"] = new SelectList(_context.Departments, "Id", "Name", product.DepartmentId);
-            return View(product);
+            return View(department);
         }
 
-        // GET: Productscontroller/Delete/5
+        // GET: Departmentscontroller/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Products == null)
+            if (id == null || _context.Departments == null)
             {
                 return NotFound();
             }
 
-            var product = await _context.Products
-                .Include(p => p.Department)
+            var department = await _context.Departments
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (product == null)
+            if (department == null)
             {
                 return NotFound();
             }
 
-            return View(product);
+            return View(department);
         }
 
-        // POST: Productscontroller/Delete/5
+        // POST: Departmentscontroller/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Products == null)
+            if (_context.Departments == null)
             {
-                return Problem("Entity set 'ApplicationDbContext.Products'  is null.");
+                return Problem("Entity set 'ApplicationDbContext.Departments'  is null.");
             }
-            var product = await _context.Products.FindAsync(id);
-            if (product != null)
+            var department = await _context.Departments.FindAsync(id);
+            if (department != null)
             {
-                _context.Products.Remove(product);
+                _context.Departments.Remove(department);
             }
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ProductExists(int id)
+        private bool DepartmentExists(int id)
         {
-          return (_context.Products?.Any(e => e.Id == id)).GetValueOrDefault();
+          return (_context.Departments?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }
