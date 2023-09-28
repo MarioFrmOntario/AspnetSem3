@@ -8,7 +8,7 @@ namespace Aspnet_Project.Models
     public enum ProductWeightUnit
     {
         GRAMS,
-        KIOGRAMS,
+        KILOGRAMS,
         POUNDS,
         OUNCES,
         LITERS,
@@ -39,7 +39,7 @@ namespace Aspnet_Project.Models
 
         [Required]
         [Range(0.01, 999999.99)]
-        public decimal weight {get; set;}=0.01M;
+        public decimal Weight {get; set;}=0.01M;
 
         [Required]
         public ProductWeightUnit WeightUnit {get; set;}= ProductWeightUnit.UNITS;

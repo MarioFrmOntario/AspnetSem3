@@ -44,14 +44,16 @@ namespace Aspnet_Project.Controllers
             return View(product);
         }
 
-        // GET: Productscontroller/Create
+        // GET: Products/Create
         public IActionResult Create()
         {
             ViewData["DepartmentId"] = new SelectList(_context.Departments, "Id", "Name");
+            ViewData["WeightUnit"]= new SelectList(Enum.GetValues(typeof(ProductWeightUnit)));
+            
             return View();
         }
 
-        // POST: Productscontroller/Create
+        // POST: Products/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -65,10 +67,11 @@ namespace Aspnet_Project.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["DepartmentId"] = new SelectList(_context.Departments, "Id", "Name", product.DepartmentId);
+            ViewData["WeightUnit"]= new SelectList(Enum.GetValues(typeof(ProductWeightUnit)));
             return View(product);
         }
 
-        // GET: Productscontroller/Edit/5
+        // GET: Products/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Products == null)
@@ -82,6 +85,7 @@ namespace Aspnet_Project.Controllers
                 return NotFound();
             }
             ViewData["DepartmentId"] = new SelectList(_context.Departments, "Id", "Name", product.DepartmentId);
+            ViewData["WeightUnit"]= new SelectList(Enum.GetValues(typeof(ProductWeightUnit)));
             return View(product);
         }
 
@@ -118,6 +122,7 @@ namespace Aspnet_Project.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["DepartmentId"] = new SelectList(_context.Departments, "Id", "Name", product.DepartmentId);
+            ViewData["WeightUnit"]= new SelectList(Enum.GetValues(typeof(ProductWeightUnit)));
             return View(product);
         }
 

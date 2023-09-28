@@ -24115,6 +24115,11 @@
       "FilePath": "c:\\Users\\Mario\\Documents\\Georgian-college\\Georgian-Files-and-info\\AspNet\\Big-boy-Project\\Aspnet-Project\\Views\\Departments\\Create.cshtml",
       "TargetPath": "Views\\Departments\\Create.cshtml",
       "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\Mario\\Documents\\Georgian-college\\Georgian-Files-and-info\\AspNet\\Big-boy-Project\\Aspnet-Project\\Views\\Shared\\Products\\_ProductsTablePartial.cshtml",
+      "TargetPath": "Views\\Shared\\Products\\_ProductsTablePartial.cshtml",
+      "FileKind": "mvc"
     }
   ]
 }
