@@ -9,11 +9,11 @@ html {
 }
 
 /*typography*/
-.nav-item a, .pb-3 h1, .pb-3 h2 {
+.nav-item a,  .pb-3 h2 {
   font-family: 'Barlow', sans-serif;
 }
 
-.text-center h1 {
+.text-center h1, .pb-3 h1{
   font-family: 'Open Sans', sans-serif;
 }
 
@@ -44,8 +44,19 @@ header .navbar{
   background-color: #d6d0b8 !important;
 }
 /*sign in button customization */
-.btn-primary {
+  .nav-item .btn-primary {
   background-color: #f1f4c6; 
+  border: none;
+  color: #000000; 
+  font-weight: 600; 
+  padding: 10px 20px; 
+  border-radius: 4px; 
+  transition: background-color 0.3s ease; 
+  text-decoration: none; 
+}
+
+.form-group .btn-primary{
+  background-color: #9dc7a0; 
   border: none;
   color: #000000; 
   font-weight: 600; 
