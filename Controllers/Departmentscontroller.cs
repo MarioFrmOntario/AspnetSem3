@@ -35,6 +35,7 @@ namespace Aspnet_Project.Controllers
             }
 
             var department = await _context.Departments
+                .Include(department => department.Products)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (department == null)
             {
