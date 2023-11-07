@@ -9,7 +9,7 @@ html {
 }
 
 /*typography*/
-.nav-item a,  .pb-3 h2 {
+.nav-item a, a, .pb-3 h2 {
   font-family: 'Barlow', sans-serif;
 }
 
@@ -20,6 +20,13 @@ html {
 .text-center p {
   font-family: 'PT Sans', sans-serif;
   
+}
+
+a{
+  color:#157347;
+}
+a:hover{
+  color: rgb(10, 10, 10);
 }
 
 #company-info tbody tr td:nth-child(odd), #proposal tbody tr td:nth-child(odd) {
