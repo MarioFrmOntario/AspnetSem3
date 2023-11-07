@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Aspnet_Project.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Aspnet_Project.Controllers
 {
@@ -46,6 +47,7 @@ namespace Aspnet_Project.Controllers
         }
 
         // GET: Departmentscontroller/Create
+        [Authorize(Roles="Admin")]
         public IActionResult Create()
         {
             return View();
@@ -54,6 +56,7 @@ namespace Aspnet_Project.Controllers
         // POST: Departmentscontroller/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles="Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name,Description")] Department department)
@@ -68,6 +71,7 @@ namespace Aspnet_Project.Controllers
         }
 
         // GET: Departmentscontroller/Edit/5
+        [Authorize(Roles="Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Departments == null)
@@ -86,6 +90,7 @@ namespace Aspnet_Project.Controllers
         // POST: Departmentscontroller/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles="Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description")] Department department)
@@ -119,6 +124,7 @@ namespace Aspnet_Project.Controllers
         }
 
         // GET: Departmentscontroller/Delete/5
+        [Authorize(Roles="Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Departments == null)
@@ -137,6 +143,7 @@ namespace Aspnet_Project.Controllers
         }
 
         // POST: Departmentscontroller/Delete/5
+        [Authorize(Roles="Admin")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

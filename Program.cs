@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Aspnet_Project.Models;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +18,13 @@ builder.Services.AddControllersWithViews();
 var connectionString = builder.Configuration.GetConnectionString("Default") ?? throw new InvalidOperationException("Connection string not found.");
 
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseMySQL(connectionString));
+
+builder.Services.AddDefaultIdentity<IdentityUser>()
+    .AddRoles<IdentityRole>()
+    .AddEntityFrameworkStores<ApplicationDbContext>();
+
+
+builder.Services.AddTransient<DbInitializer>();
 
 var app = builder.Build();
 
@@ -38,6 +46,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
@@ -56,4 +65,13 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
+app.MapRazorPages();
+
+var scopeFactory = app.Services.GetRequiredService<IServiceScopeFactory>();
+using var scope = scopeFactory.CreateScope();
+var initializer = scope.ServiceProvider.GetRequiredService<DbInitializer>();
+await DbInitializer.Initialize(
+    scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>(),
+    scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>()
+);
 app.Run();
