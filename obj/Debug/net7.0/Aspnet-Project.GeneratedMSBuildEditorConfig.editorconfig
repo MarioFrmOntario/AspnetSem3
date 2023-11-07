@@ -16,6 +16,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\Mario\Documents\Georgian-college\Georgian-Files-and-info\AspNet\Big-boy-Project\Aspnet-Project
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/Mario/Documents/Georgian-college/Georgian-Files-and-info/AspNet/Big-boy-Project/Aspnet-Project/Views/Carts/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydHNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Mario/Documents/Georgian-college/Georgian-Files-and-info/AspNet/Big-boy-Project/Aspnet-Project/Views/Departments/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwYXJ0bWVudHNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
