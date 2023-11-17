@@ -581,3 +581,5 @@ C:\Users\Mario\Documents\Georgian-college\Georgian-Files-and-info\AspNet\Big-boy
 C:\Users\Mario\Documents\Georgian-college\Georgian-Files-and-info\AspNet\Big-boy-Project\Aspnet-Project\bin\Debug\net7.0\Microsoft.Extensions.Identity.Stores.dll
 C:\Users\Mario\Documents\Georgian-college\Georgian-Files-and-info\AspNet\Big-boy-Project\Aspnet-Project\bin\Debug\net7.0\Microsoft.Extensions.Options.dll
 C:\Users\Mario\Documents\Georgian-college\Georgian-Files-and-info\AspNet\Big-boy-Project\Aspnet-Project\obj\Debug\net7.0\Aspnet-Project.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Mario\Documents\Georgian-college\Georgian-Files-and-info\AspNet\Big-boy-Project\Aspnet-Project\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.Google.dll
+C:\Users\Mario\Documents\Georgian-college\Georgian-Files-and-info\AspNet\Big-boy-Project\Aspnet-Project\obj\Debug\net7.0\Aspnet-Project.sourcelink.json
