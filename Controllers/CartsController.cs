@@ -1,35 +1,42 @@
 using Microsoft.AspNetCore.Mvc;
 using Aspnet_Project.Models;
-using Newtonsoft.Json;
 using Microsoft.EntityFrameworkCore;
+using Aspnet_Projects.Services;
 
 
 namespace Aspnet_Project.Controllers
 {
     public class CartsController : Controller
     {
-        private readonly string _cartSessionKey;
+        private readonly CartService _cartService;
         private readonly ApplicationDbContext _context;
 
-        public CartsController(ApplicationDbContext context)
+        public CartsController(CartService cartService, ApplicationDbContext context)
         {
-            _cartSessionKey = "Cart";
             _context = context;
+            _cartService = cartService;
         }
 
         public async Task<IActionResult> Index()
         {
-            var cart = GetCart();
+            // Get our cart (either an existing or generate a new one)
+            var cart = _cartService.GetCart();
 
             if (cart == null)
             {
                 return NotFound();
             }
 
+            // If the cart has items, we need to add the product reference for those items
             if (cart.CartItems.Count > 0)
             {
                 foreach (var cartItem in cart.CartItems)
                 {
+                    /*
+                        SELECT * FROM Products
+                        JOIN Departments ON Products.DepartmentId = Departments.Id
+                        WHERE Products.Id = 1 LIMIT 1
+                    */
                     var product = await _context.Products
                         .Include(p => p.Department)
                         .FirstOrDefaultAsync(p => p.Id == cartItem.ProductId);
@@ -47,7 +54,43 @@ namespace Aspnet_Project.Controllers
         [HttpPost]
         public async Task<IActionResult> AddToCart(int productId, int quantity)
         {
-            var cart = GetCart();
+            // Getting the active cart
+            var cart = _cartService.GetCart();
+
+            if (cart == null) {
+                return NotFound();
+            }
+
+            // Checking if item already is in the cart
+            var cartItem = cart.CartItems.Find(cartItem => cartItem.ProductId == productId);
+
+            if (cartItem != null && cartItem.Product != null)
+            {
+                cartItem.Quantity += quantity;
+            }
+            else
+            {
+                var product = await _context.Products
+                    .FirstOrDefaultAsync(p => p.Id == productId);
+
+                if (product == null)
+                {
+                    return NotFound();
+                }
+
+                cartItem = new CartItem { ProductId = productId, Quantity = quantity, Product = product };
+                cart.CartItems.Add(cartItem);
+            }
+
+            _cartService.SaveCart(cart);
+            
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public IActionResult RemoveFromCart(int productId)
+        {
+            var cart = _cartService.GetCart();
 
             if (cart == null)
             {
@@ -56,39 +99,15 @@ namespace Aspnet_Project.Controllers
 
             var cartItem = cart.CartItems.Find(cartItem => cartItem.ProductId == productId);
 
-            if (cartItem != null && cartItem.Product != null)
+            if (cartItem != null)
             {
-                cartItem.Quantity += quantity; 
-            }    
-            else
-            {
-                var product = await _context.Products
-                    .FirstOrDefaultAsync(p => p.Id == productId);
+                cart.CartItems.Remove(cartItem);
 
-                if (product == null) {
-                    return NotFound();
-                }
-
-                cartItem = new CartItem { ProductId = productId, Quantity = quantity, Product = product };
-                cart.CartItems.Add(cartItem);
+                _cartService.SaveCart(cart);
             }
 
-
-            SaveCart(cart);
-
             return RedirectToAction("Index");
-        }
-
-        private Cart? GetCart()
-        {
-            var cartJson = HttpContext.Session.GetString(_cartSessionKey);
-            return cartJson == null ? new Cart() : JsonConvert.DeserializeObject<Cart>(cartJson);
-        }
-
-        private void SaveCart(Cart cart)
-        {
-            var cartJson = JsonConvert.SerializeObject(cart);
-            HttpContext.Session.SetString(_cartSessionKey, cartJson);
-        }
+        }      
     }
+
 }
