@@ -118,7 +118,7 @@ namespace Aspnet_Projects.Controllers
                   {
                     PriceData = new SessionLineItemPriceDataOptions
                     {
-                        UnitAmount = (long)order.Total,
+                        UnitAmount = (long)order.Total *100 ,
                         Currency = "cad",
                         ProductData = new SessionLineItemPriceDataProductDataOptions
                         {
@@ -134,7 +134,7 @@ namespace Aspnet_Projects.Controllers
                 },
                 Mode = "payment",
                 SuccessUrl = "https://" + Request.Host + "/Orders/SaveOrder",
-                CancelUrl = "https://" + Request.Host + "/Carts/ViewMyCart",
+                CancelUrl = "https://" + Request.Host + "/Carts",
             };
             var service = new SessionService();
             Session session = service.Create(options);
