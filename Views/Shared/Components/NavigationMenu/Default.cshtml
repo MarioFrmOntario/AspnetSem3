@@ -15,6 +15,13 @@
                     <a class="nav-link text-dark"  asp-controller="@MenuItem.Controller" asp-action="@MenuItem.Action">@MenuItem.Label</a>
                 </li>
                 }
+
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-controller="Orders" asp-action="Index"> Orders</a>
+                    </li>
+                }
             </ul>
              <ul class="navbar-nav">
                     @if (User.Identity.IsAuthenticated)

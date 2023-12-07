@@ -60,5 +60,15 @@
                 </tr>
             </tfoot>
         </table>
+
+        if (!Model.PaymentReceived)
+        {
+            <form asp-action="ProcessPayment">
+                <div class="form-group my-3">
+                    <input type="submit" value="Go to Payment" class="btn btn-success" />
+                </div>
+            </form>
+        }
     }
 </div>
+

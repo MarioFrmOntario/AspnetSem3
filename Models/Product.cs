@@ -4,17 +4,17 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Aspnet_Project.Models
 {
-
     public enum ProductWeightUnit
     {
         GRAMS,
         KILOGRAMS,
         POUNDS,
         OUNCES,
-        LITERS,
+        LITRES,
         UNITS,
+        PIECES,
     }
-     public class Product
+    public class Product
     {
         [Key]
         public int Id { get; set; } = 0;
@@ -38,13 +38,14 @@ namespace Aspnet_Project.Models
         public decimal MSRP { get; set; } = 0.01M;
 
         [Required]
-        
-        public decimal Weight {get; set;}=0.01M;
+        [Range(0.01, 999999.99)]
+        public decimal Weight { get; set; } = 0.01M;
 
         [Required]
-        public ProductWeightUnit WeightUnit {get; set;}= ProductWeightUnit.UNITS;
+        public ProductWeightUnit WeightUnit { get; set; } = ProductWeightUnit.UNITS;
 
         [ForeignKey("DepartmentId")]
-        public virtual Department? Department { get; set; }
+        public virtual Department? Department { get; set; } // creates the association to departments
+        // allows a department to be stored in an instance of a product
     }
 }
